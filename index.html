@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gray Space Advisors — Independent Diligence for Powered Land Investment</title>
+  <meta name="description" content="Gray Space Advisors provides independent diligence and advisory services for powered land and data center infrastructure investments.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark-primary: #3F454A;
+      --dark-deep: #2F353A;
+      --accent-steel: #7A8F9F;
+      --accent-light: #9AACB8;
+      --accent-mid: #5C6B77;
+      --bg-light: #F4F6F7;
+      --white: #FFFFFF;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      color: var(--dark-primary);
+      line-height: 1.7;
+      background: var(--white);
+      font-size: 17px;
+      font-weight: 300;
+    }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s;
+    }
+    header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.1rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-mark { display: flex; align-items: center; }
+
+    .logo-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--dark-deep);
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--accent-mid);
+      text-decoration: none;
+      margin-left: 2.5rem;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    nav a:hover { color: var(--dark-deep); }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.25rem;
+    }
+    .mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark-primary);
+      margin: 6px 0;
+      transition: 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark-deep);
+      color: var(--white);
+      padding: 8rem 2.5rem 7rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 3.4rem;
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--accent-light);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--accent-steel);
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      padding: 1rem 2.8rem;
+      border: 1.5px solid var(--accent-steel);
+      color: var(--white);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn:hover {
+      background: var(--accent-steel);
+      color: var(--white);
+    }
+
+    /* ── Tile Mosaic (Hero Visual) ── */
+    .tile-mosaic {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+
+    .tile {
+      position: absolute;
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s;
+      opacity: 0.85;
+    }
+    .tile:hover { opacity: 1; }
+    .tile.clicked {
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tile-1 {
+      width: 200px; height: 200px;
+      background: var(--dark-primary);
+      top: 40px; left: 20px;
+    }
+    .tile-2 {
+      width: 180px; height: 160px;
+      background: var(--accent-steel);
+      top: 80px; left: 120px;
+    }
+    .tile-3 {
+      width: 140px; height: 140px;
+      background: var(--accent-mid);
+      top: 180px; left: 220px;
+    }
+    .tile-4 {
+      width: 160px; height: 120px;
+      background: var(--accent-light);
+      top: 20px; left: 260px;
+      opacity: 0.6;
+    }
+    .tile-5 {
+      width: 120px; height: 180px;
+      background: var(--dark-deep);
+      top: 200px; left: 60px;
+      opacity: 0.5;
+    }
+    .tile-6 {
+      width: 100px; height: 100px;
+      background: var(--accent-steel);
+      top: 300px; left: 280px;
+      opacity: 0.4;
+    }
+
+    /* ── Section shared ── */
+    section { padding: 6rem 2.5rem; }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-steel);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 300;
+      text-align: center;
+      margin-bottom: 1rem;
+      color: var(--dark-deep);
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--accent-mid);
+      font-size: 1.15rem;
+      font-weight: 300;
+      max-width: 680px;
+      margin: 0 auto 4rem;
+      line-height: 1.8;
+    }
+
+    /* ── Tile Divider ── */
+    .tile-divider {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 3rem 0;
+      cursor: pointer;
+    }
+
+    .tile-divider .mini-tile {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tile-divider .mini-tile:nth-child(1) { background: var(--dark-primary); }
+    .tile-divider .mini-tile:nth-child(2) { background: var(--accent-steel); margin-top: 8px; }
+    .tile-divider .mini-tile:nth-child(3) { background: var(--accent-mid); margin-top: -4px; }
+    .tile-divider .mini-tile:nth-child(4) { background: var(--accent-light); margin-top: 12px; }
+    .tile-divider .mini-tile:nth-child(5) { background: var(--dark-deep); margin-top: 2px; }
+
+    .tile-divider.clicked .mini-tile:nth-child(1) { transform: translate(-6px, 4px); }
+    .tile-divider.clicked .mini-tile:nth-child(2) { transform: translate(3px, -6px); }
+    .tile-divider.clicked .mini-tile:nth-child(3) { transform: translate(-4px, 8px); }
+    .tile-divider.clicked .mini-tile:nth-child(4) { transform: translate(5px, -3px); }
+    .tile-divider.clicked .mini-tile:nth-child(5) { transform: translate(-2px, 5px); }
+
+    /* ── Services Overview ── */
+    .services { background: var(--bg-light); }
+
+    .service-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto 5rem;
+    }
+
+    .pillar {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      border-top: 3px solid var(--accent-steel);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .pillar:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    }
+
+    .pillar-number {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--accent-steel);
+      margin-bottom: 1rem;
+    }
+
+    .pillar h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: var(--dark-deep);
+    }
+
+    .pillar .gap-label {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--accent-steel);
+      font-style: italic;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .pillar p {
+      font-size: 0.95rem;
+      color: var(--accent-mid);
+      line-height: 1.7;
+    }
+
+    /* ── Service Deep Dives ── */
+    .deep-dives {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .deep-dive {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 3rem;
+      padding: 3rem 0;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      align-items: start;
+    }
+    .deep-dive:last-child { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+    .dd-header h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--dark-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .dd-header .gap-text {
+      font-size: 0.9rem;
+      color: var(--accent-steel);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    .dd-items {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .dd-item h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--dark-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .dd-item p {
+      font-size: 0.92rem;
+      color: var(--accent-mid);
+      line-height: 1.7;
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--dark-deep);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .contact .section-label { color: var(--accent-light); }
+    .contact .section-title { color: var(--white); }
+    .contact .section-subtitle { color: var(--accent-light); }
+
+    .contact .btn { margin-top: 0.5rem; }
+
+    /* ── Footer ── */
+    footer {
+      background: #1e2226;
+      color: var(--accent-mid);
+      text-align: center;
+      padding: 1.75rem 2.5rem;
+      font-size: 0.85rem;
+      font-weight: 300;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .service-pillars { grid-template-columns: repeat(2, 1fr); }
+      .dd-items { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .hero { padding: 5rem 1.5rem 4rem; }
+      .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-text h1 { font-size: 2.4rem; }
+      .tile-mosaic { height: 280px; }
+      .tile-1 { width: 140px; height: 140px; }
+      .tile-2 { width: 120px; height: 110px; }
+      .tile-3 { width: 100px; height: 100px; }
+      .tile-4 { width: 110px; height: 80px; }
+      .tile-5 { width: 80px; height: 130px; }
+      .tile-6 { width: 70px; height: 70px; }
+      section { padding: 4rem 1.5rem; }
+      .section-title { font-size: 2rem; }
+      .service-pillars { grid-template-columns: 1fr; }
+      .deep-dive { grid-template-columns: 1fr; gap: 1.5rem; }
+      .dd-items { grid-template-columns: 1fr; }
+      nav { display: none; }
+      nav.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,0.98);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+        padding: 1rem 2.5rem 1.5rem;
+      }
+      nav.open a { margin: 0.6rem 0; margin-left: 0; }
+      .mobile-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#" class="logo-link">
+        <div class="logo-mark">
+          <svg width="36" height="30" viewBox="0 0 36 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="2" width="20" height="18" fill="#3F454A"/>
+            <rect x="12" y="8" width="18" height="16" fill="#7A8F9F"/>
+            <rect x="8" y="12" width="10" height="10" fill="#2F353A"/>
+          </svg>
+        </div>
+        <span class="logo-text">GRAY SPACE ADVISORS</span>
+      </a>
+      <button class="mobile-toggle" aria-label="Toggle navigation" onclick="document.querySelector('nav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h1>Independent Diligence for Powered Land Investment</h1>
+        <p>Helping investors identify, evaluate, and execute data center infrastructure opportunities at the intersection of real estate and energy.</p>
+        <div class="hero-tagline">Value is created in the gray space.</div>
+        <a href="#contact" class="btn">GET IN TOUCH</a>
+      </div>
+      <div class="tile-mosaic" id="heroTiles">
+        <div class="tile tile-1" onclick="nudgeTile(this)"></div>
+        <div class="tile tile-2" onclick="nudgeTile(this)"></div>
+        <div class="tile tile-3" onclick="nudgeTile(this)"></div>
+        <div class="tile tile-4" onclick="nudgeTile(this)"></div>
+        <div class="tile tile-5" onclick="nudgeTile(this)"></div>
+        <div class="tile tile-6" onclick="nudgeTile(this)"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tile Divider -->
+  <div class="tile-divider" onclick="this.classList.toggle('clicked')">
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+  </div>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="section-label">Advisory Services</div>
+    <h2 class="section-title">Four Pillars of Diligence</h2>
+    <p class="section-subtitle">Each pillar directly addresses a gap investors face when evaluating powered land opportunities — from feasibility through executed transaction.</p>
+
+    <!-- Overview Cards -->
+    <div class="service-pillars">
+      <div class="pillar">
+        <div class="pillar-number">01</div>
+        <h3>Feasibility Assessment</h3>
+        <div class="gap-label">Power, permitting &amp; community opposition are unclear at time of investment</div>
+        <p>Upfront assessment of power, permitting, gas, and community risk — informing whether a site is viable before capital is deployed.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">02</div>
+        <h3>Development Support</h3>
+        <div class="gap-label">Development timelines are long and execution risk is opaque</div>
+        <p>Active interconnection execution, equipment procurement, gas contracting, and project finance structuring to advance projects through development.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">03</div>
+        <h3>Buyer Brokerage</h3>
+        <div class="gap-label">Unclear commercial traction — LOIs do not equal transactions</div>
+        <p>Commercial diligence, market positioning, buyer engagement, and M&amp;A advisory — turning derisked assets into executed transactions.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-number">04</div>
+        <h3>Investment Sourcing</h3>
+        <div class="gap-label">No standard for what 'good' looks like — diligence criteria with action plans are absent</div>
+        <p>Engaging institutional investors with standardized diligence roadmaps and curated powered land deal flow.</p>
+      </div>
+    </div>
+
+    <!-- Deep Dives -->
+    <div class="deep-dives">
+      <div class="deep-dive">
+        <div class="dd-header">
+          <h3>Feasibility Assessment</h3>
+          <div class="gap-text">Establishing site viability before capital is deployed</div>
+        </div>
+        <div class="dd-items">
+          <div class="dd-item">
+            <h4>Power &amp; Interconnection</h4>
+            <p>Utility POI assessment, queue position, cost responsibility, and schedule risk. Transformer and generator vendor landscape, lead times, and reservation strategy.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Permitting &amp; Zoning</h4>
+            <p>Local entitlement path, gating items, critical constraints, and realistic timeline for development approvals — including community engagement risk.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Gas Feasibility</h4>
+            <p>Upfront assessment of firm gas supply feasibility, pipeline constraints, and indicative cost — informing whether a site is viable before capital is deployed.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deep-dive">
+        <div class="dd-header">
+          <h3>Development Support</h3>
+          <div class="gap-text">Advancing projects through the development process to transaction readiness</div>
+        </div>
+        <div class="dd-items">
+          <div class="dd-item">
+            <h4>Power &amp; Interconnection Execution</h4>
+            <p>Active utility queue management, interconnection agreement negotiation, transformer and generator procurement, and delivery sequencing — from application through to energization.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Gas Transport &amp; Supply</h4>
+            <p>Firm transport contracting, pipeline interconnection, supply agreement negotiation, and ongoing risk mitigation for gas-powered data center sites.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Finance, Structuring &amp; Risk</h4>
+            <p>Project finance modeling, capital stack structuring, and a bankable risk register — bridging infra PE and real estate logic to make the project fundable.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deep-dive">
+        <div class="dd-header">
+          <h3>Buyer Brokerage</h3>
+          <div class="gap-text">Turning diligenced, well-positioned assets into executed transactions</div>
+        </div>
+        <div class="dd-items">
+          <div class="dd-item">
+            <h4>Commercial Diligence</h4>
+            <p>LOI review and buyer qualification, configuration fit analysis, proof of demand, and valuation projections — establishing real vs. indicative interest.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Market Positioning &amp; Outreach</h4>
+            <p>Narrative development, targeted buyer identification and engagement via hyperscaler and co-locator network, and competitive positioning of the asset.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Contract &amp; M&amp;A Advisory</h4>
+            <p>Commercial contract negotiation and M&amp;A advisory — turning diligenced, well-positioned assets into executed transactions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="deep-dive">
+        <div class="dd-header">
+          <h3>Investment Sourcing</h3>
+          <div class="gap-text">Making deals underwritable by institutional investors</div>
+        </div>
+        <div class="dd-items">
+          <div class="dd-item">
+            <h4>Investor Network</h4>
+            <p>Engage infra PE, real assets, private credit, and special situations groups seeking repeatable diligence frameworks and curated powered land deal flow.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Standardized Diligence Roadmap</h4>
+            <p>Criteria and action plans across feasibility, permitting, power, gas, capital, and commercial dimensions — making deals underwritable by institutional investors.</p>
+          </div>
+          <div class="dd-item">
+            <h4>Investment Structuring Advisory</h4>
+            <p>Stage-appropriate advice on capital structure, milestone sequencing, and investor targeting to match the right capital to each phase of development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tile Divider -->
+  <div class="tile-divider" onclick="this.classList.toggle('clicked')">
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+    <div class="mini-tile"></div>
+  </div>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section-label">Get Started</div>
+    <h2 class="section-title">Start a Conversation</h2>
+    <p class="section-subtitle">Whether you're evaluating a powered land opportunity or building an infrastructure portfolio, we'd like to hear from you.</p>
+    <a href="mailto:ben@grayspaceadvisors.com" class="btn">ben@grayspaceadvisors.com</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Gray Space Advisors. All rights reserved.
+  </footer>
+
+  <script>
+    // Sticky header shadow
+    window.addEventListener('scroll', function() {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 10);
+    });
+
+    // Tile click — nudge in a random direction then settle back
+    function nudgeTile(el) {
+      var dx = (Math.random() - 0.5) * 30;
+      var dy = (Math.random() - 0.5) * 30;
+      el.classList.add('clicked');
+      el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px)';
+      setTimeout(function() {
+        el.style.transform = 'translate(' + (dx * 0.4) + 'px, ' + (dy * 0.4) + 'px)';
+        setTimeout(function() {
+          el.classList.remove('clicked');
+        }, 600);
+      }, 500);
+    }
+
+    // Ambient tile drift on scroll
+    var tiles = document.querySelectorAll('.tile-mosaic .tile');
+    window.addEventListener('scroll', function() {
+      var scrollY = window.scrollY;
+      tiles.forEach(function(tile, i) {
+        var speed = (i % 3 + 1) * 0.03;
+        var direction = i % 2 === 0 ? 1 : -1;
+        var offset = scrollY * speed * direction;
+        if (!tile.classList.contains('clicked')) {
+          tile.style.transform = 'translateY(' + offset + 'px)';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
